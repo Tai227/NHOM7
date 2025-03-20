@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #111;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    background: transparent;
+    padding: 20px 300px;
+}
+
+.right-menu {
+    display: flex; 
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 37px;
+    font-weight: bold;
+    color: orange;
+}
+
+.search-box {
+    display: flex;
+    border-bottom: 2px solid orange;
+    padding: 10px;
+    width: 370px;
+}
+.search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 18px;
+    width: 100%;
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn {
+    white-space: nowrap;    
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.white-btn {
+    background: white;
+    color: #d76a2e;
+    border: 2px solid #d76a2e;
+    
+}
+
+.white-btn:hover {
+    background: #d76a2e;
+    color: white;
+    border: 2px solid white;
+    text-decoration: none;
+}
+
+.orange-btn {
+    background: orange;
+    color: black;
+    border: 2px solid whitesmoke;
+}
+
+.orange-btn:hover {
+    background: #f9f9f9;
+}
+
+.slider img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.movies {
+    padding: 20px;
+}
+
+.movies h2 {
+    color: orange;
+}
+
+.movie-list {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.movie-card {
+    background: #222;
+    font-size: 13px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.movie-card img {
+    width: 100%;
+    aspect-ratio: 27 / 40;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.movie-card button {
+    background: orange;
+    color: black;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.movie-container {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* css trang đăng nhập*/
+.login-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(255, 102, 0, 0.8);
+    text-align: center;
+}
+
+.login-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFA500;
+    margin-bottom: 20px;
+}
+
+.login-form input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+}
+
+.login-form input::placeholder {
+    color: #bbb;
+}
+
+.btn-login {
+    width: 70%;
+    padding: 10px;
+    background-color: #FF6600;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #e65c00;
+}
