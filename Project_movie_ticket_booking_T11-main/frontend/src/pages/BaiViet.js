@@ -62,6 +62,7 @@ const BaiViet = () => {
             Đăng ngày: {baiViet.ngay_tao ? new Date(baiViet.ngay_tao).toLocaleDateString('vi-VN') : 'Không rõ'}
           </Typography>
           <VisibilityIcon fontSize="small" sx={{ ml: 2, mr: 1 }} />
+
           <Typography variant="caption" color="text.secondary">
             {Math.floor(Math.random() * 10000)} {/* Giả lập số lượt xem */}
           </Typography>
@@ -70,11 +71,6 @@ const BaiViet = () => {
         <Typography variant="body1" color="text.secondary" paragraph>
           {baiViet.tom_tat || 'Không có tóm tắt'}
         </Typography>
-
-        {/* Nếu có thêm nội dung chi tiết (nếu API hỗ trợ) */}
-        {/* <Typography variant="body1" paragraph>
-          {baiViet.noi_dung || 'Không có nội dung chi tiết.'}
-        </Typography> */}
       </Box>
     </Container>
   );

@@ -6,16 +6,23 @@ import {
   InputBase,
   Box,
   Paper,
+  Collapse,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import MovieIcon from "@mui/icons-material/Movie";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useState } from "react";
 
 export default function ThanhDieuHuong({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem("nguoi_dung"));
+  const isLoggedIn = !!user;
 
   const handleSearch = (e) => {
     if (e.key === "Enter") {
@@ -32,10 +39,20 @@ export default function ThanhDieuHuong({ onSearch }) {
     navigate("/");
   };
 
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("nguoi_dung");
+    localStorage.removeItem("vai_tro");
+    setOpen(false);
+    navigate("/dang-nhap");
+  };
+
   return (
     <AppBar position="static" elevation={0} sx={{ backgroundColor: "#f2f2f2", px: 3 }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {/* Logo CineGo */}
         <Typography
           variant="h5"
           component={Link}
@@ -52,7 +69,6 @@ export default function ThanhDieuHuong({ onSearch }) {
           CineGo
         </Typography>
 
-        {/* Thanh tìm kiếm */}
         <Paper
           component="form"
           sx={{
@@ -78,9 +94,7 @@ export default function ThanhDieuHuong({ onSearch }) {
           />
         </Paper>
 
-        {/* Các nút chức năng */}
         <Box sx={{ display: "flex", gap: 1 }}>
-
           <Button
             variant="outlined"
             component={Link}
@@ -114,48 +128,116 @@ export default function ThanhDieuHuong({ onSearch }) {
           >
             Bài viết
           </Button>
-          {/* Đăng nhập / Đăng ký */}
-          <Box
-            sx={{
-              display: "flex",
-              border: "1px solid #ff6600",
-              borderRadius: 3,
-              overflow: "hidden",
-              backgroundColor: "#fff",
-              alignItems: "center",
-            }}
-          >
-            <AccountCircleIcon sx={{ color: "#ff6600", ml: 1 }} />
-            <Button
-              component={Link}
-              to="/dang-nhap"
+
+          {isLoggedIn ? (
+            <Box sx={{ position: "relative" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  border: "1px solid #ff6600",
+                  borderRadius: 3,
+                  backgroundColor: "#fff",
+                  alignItems: "center",
+                  cursor: "pointer",
+                }}
+                onClick={handleToggle}
+              >
+                <AccountCircleIcon sx={{ color: "#ff6600", ml: 1 }} />
+                <Typography
+                  sx={{
+                    color: "#ff6600",
+                    textTransform: "none",
+                    fontWeight: "bold",
+                    px: 2,
+                    py: 0.5,
+                  }}
+                >
+                  {user.ten_dang_nhap}
+                </Typography>
+                <ArrowDropDownIcon
+                  sx={{
+                    color: "#ff6600",
+                    transform: open ? "rotate(180deg)" : "rotate(0deg)",
+                    transition: "transform 0.3s ease",
+                  }}
+                />
+              </Box>
+              <Collapse in={open}>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "100%",
+                    right: 0,
+                    mt: 1,
+                    bgcolor: "#fff",
+                    border: "1px solid #ff6600",
+                    borderRadius: 3,
+                    boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+                    zIndex: 1300, // Tăng zIndex để đảm bảo hiển thị trên các phần tử khác
+                  }}
+                >
+                  <Button
+                    onClick={handleLogout}
+                    startIcon={<ExitToAppIcon />}
+                    sx={{
+                      color: "#ff6600",
+                      textTransform: "none",
+                      fontWeight: "bold",
+                      px: 2,
+                      py: 1,
+                      width: "100%",
+                      justifyContent: "flex-start",
+                      "&:hover": { bgcolor: "#ffe0cc" },
+                    }}
+                  >
+                    Đăng xuất
+                  </Button>
+                </Box>
+              </Collapse>
+            </Box>
+          ) : (
+            <Box
               sx={{
-                color: "#ff6600",
-                textTransform: "none",
-                fontWeight: "bold",
-                borderRight: "1px solid #ff6600",
-                borderRadius: 0,
-                px: 2,
-                "&:hover": { backgroundColor: "#ffe0cc" },
+                display: "flex",
+                border: "1px solid #ff6600",
+                borderRadius: 3,
+                overflow: "hidden",
+                backgroundColor: "#fff",
+                alignItems: "center",
               }}
             >
-              Đăng nhập
-            </Button>
-            <Button
-              component={Link}
-              to="/dang-ky"
-              sx={{
-                color: "#ff6600",
-                textTransform: "none",
-                fontWeight: "bold",
-                borderRadius: 0,
-                px: 2,
-                "&:hover": { backgroundColor: "#ffe0cc" },
-              }}
-            >
-              Đăng ký
-            </Button>
-          </Box>
+              <AccountCircleIcon sx={{ color: "#ff6600", ml: 1 }} />
+              <Button
+                component={Link}
+                to="/dang-nhap"
+                sx={{
+                  color: "#ff6600",
+                  textTransform: "none",
+                  fontWeight: "bold",
+                  borderRight: "1px solid #ff6600",
+                  borderRadius: 0,
+                  px: 2,
+                  "&:hover": { backgroundColor: "#ffe0cc" },
+                }}
+              >
+                Đăng nhập
+              </Button>
+              <Button
+                component={Link}
+                to="/dang-ky"
+                sx={{
+                  color: "#ff6600",
+                  textTransform: "none",
+                  fontWeight: "bold",
+                  borderRadius: 0,
+                  px: 2,
+                  "&:hover": { backgroundColor: "#ffe0cc" },
+                }}
+              >
+                Đăng ký
+              </Button>
+            </Box>
+          )}
         </Box>
       </Toolbar>
     </AppBar>

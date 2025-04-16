@@ -91,7 +91,7 @@ const CardPhim = ({ phim }) => {
           zIndex: 2,
         }}
       >
-        T18
+        T16
       </Box>
 
       <CardMedia
@@ -243,7 +243,7 @@ export default function TrangChu({ searchTerm = "" }) {
           style={{ paddingBottom: "40px" }}
         >
           {danhSachPhim.length > 0 ? (
-            danhSachPhim.slice(0, 7).map((phim) => (
+            danhSachPhim.slice(0, 4).map((phim) => (
               <SwiperSlide key={phim.id}>
                 <CardMedia
                   component="img"

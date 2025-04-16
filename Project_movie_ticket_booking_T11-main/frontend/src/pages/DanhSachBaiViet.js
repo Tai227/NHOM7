@@ -47,14 +47,14 @@ const DanhSachBaiViet = () => {
                 boxShadow: 3,
                 '&:hover': { boxShadow: 6 },
                 width: '100%',
-                maxWidth: '90%', // Giới hạn chiều rộng tối đa thay vì minWidth
+                maxWidth: '100%', // Giới hạn chiều rộng tối đa thay vì minWidth
                 margin: '0 auto', // Căn giữa Card
               }}
             >
               <CardMedia
                 component="img"
                 sx={{
-                  width: '40%', // Giảm tỷ lệ hình ảnh để cân đối hơn
+                  width: '350px', // Giảm tỷ lệ hình ảnh để cân đối hơn
                   height: 200, // Giảm chiều cao để phù hợp
                   objectFit: 'cover',
                 }}
